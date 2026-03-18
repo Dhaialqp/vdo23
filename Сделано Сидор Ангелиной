@@ -1,0 +1,91 @@
+# Задание 1
+with open("test.txt", "w", encoding="utf-8") as f:
+    f.write("Привет, файл!")
+
+with open("test.txt", "r", encoding="utf-8") as f:
+    print(f.read())
+
+
+# Задание 2
+with open("numbers.txt", "w") as f:
+    for i in range(1, 11):
+        f.write(str(i) + "\n")
+
+total = 0
+with open("numbers.txt", "r") as f:
+    for line in f:
+        total += int(line.strip())
+print(total)
+
+
+# Задание 3
+lines = []
+for _ in range(5):
+    lines.append(input())
+
+with open("user_text.txt", "w", encoding="utf-8") as f:
+    for line in lines:
+        f.write(line + "\n")
+
+with open("user_text.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        if len(line.strip()) > 5:
+            print(line.strip())
+
+
+# Задание 4
+with open("data.txt", "r", encoding="utf-8") as f:
+    print(len(f.readlines()))
+
+
+# Задание 5
+with open("data.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+    words = text.split()
+    print(len(words))
+
+
+# Задание 6
+with open("log.txt", "a", encoding="utf-8") as f:
+    f.write("Строка 1\n")
+    f.write("Строка 2\n")
+    f.write("Строка 3\n")
+
+
+# Задание 7
+with open("nums.txt", "r") as f:
+    numbers = list(map(int, f.read().split()))
+    print(min(numbers), max(numbers))
+
+
+# Задание 8
+with open("source.txt", "r", encoding="utf-8") as src:
+    content = src.read()
+
+with open("copy.txt", "w", encoding="utf-8") as dst:
+    dst.write(content)
+
+
+# Задание 9
+with open("source.txt", "r", encoding="utf-8") as f:
+    content = f.read().upper()
+
+with open("upper.txt", "w", encoding="utf-8") as f:
+    f.write(content)
+
+
+# Задание 10
+import json
+
+person = {
+    "имя": "Ангелиеа",
+    "возраст": 16,
+    "город": "Ульяновск"
+}
+
+with open("person.json", "w", encoding="utf-8") as f:
+    json.dump(person, f, ensure_ascii=False, indent=4)
+
+with open("person.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    print(f"Имя: {data['имя']}, Возраст: {data['возраст']}, Город: {data['город']}")
